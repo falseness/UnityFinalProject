@@ -31,6 +31,13 @@ public class BulletController : MonoBehaviour
         if (other.gameObject.tag == "Enemy")
         {
             Destroy(other.gameObject);
+
+            Destroy(gameObject);
+        }
+        if (other.gameObject.tag == "Strong")
+        {
+            other.gameObject.GetComponent<AsteroidControllet>().minusHP();
+            Destroy(gameObject);
         }
     }
 }

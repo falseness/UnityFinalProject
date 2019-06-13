@@ -27,23 +27,29 @@ public class OctoEnemyController : MonoBehaviour
     }
     void Update()
     {
-        lastShotTime += Time.deltaTime;
-
-        gameObject.transform.Translate(new Vector2(0, speed * Time.deltaTime));
-        if (lastShotTime > reload)
+        GameController game = GameController.GetGame();
+        if (transform.position.y > game.getTopBorder())
+            game.moveToMap(gameObject, Time.deltaTime);
+        else
         {
-            createBullet(0);
+            lastShotTime += Time.deltaTime;
 
-            createBullet(90);
-            createBullet(-90);
+            gameObject.transform.Translate(new Vector2(0, speed * Time.deltaTime));
+            if (lastShotTime > reload)
+            {
+                createBullet(0);
 
-            createBullet(45);
-            createBullet(-45);
+                createBullet(90);
+                createBullet(-90);
 
-            createBullet(135);
-            createBullet(-135);
-            lastShotTime = 0;
+                createBullet(45);
+                createBullet(-45);
 
+                createBullet(135);
+                createBullet(-135);
+                lastShotTime = 0;
+
+            }
         }
         deleteIfNeed();
     }

@@ -104,15 +104,20 @@ public class LaserEnemyController : MonoBehaviour
     }
     void Update()
     {
-        
-        if (!stopOnY)
-        {
-            moveY(Time.deltaTime);
-        }
+        GameController game = GameController.GetGame();
+        if (transform.position.y > game.getTopBorder())
+            game.moveToMap(gameObject, Time.deltaTime);
         else
         {
-            moveX(Time.deltaTime);
-            laserLogic(Time.deltaTime);
+            if (!stopOnY)
+            {
+                moveY(Time.deltaTime);
+            }
+            else
+            {
+                moveX(Time.deltaTime);
+                laserLogic(Time.deltaTime);
+            }
         }
         deleteIfNeed();
     }

@@ -51,9 +51,15 @@ public class TripleEnemyController : MonoBehaviour
     }
     void Update()
     {
-        move(Time.deltaTime);
+        GameController game = GameController.GetGame();
+        if (transform.position.y > game.getTopBorder())
+            game.moveToMap(gameObject, Time.deltaTime);
+        else
+        {
+            move(Time.deltaTime);
 
-        shotsLogic(Time.deltaTime);
+            shotsLogic(Time.deltaTime);
+        }
 
         deleteIfNeed();
     }

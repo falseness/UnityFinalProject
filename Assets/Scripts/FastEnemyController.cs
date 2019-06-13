@@ -36,8 +36,14 @@ public class FastEnemyController : MonoBehaviour
     }
     void Update()
     {
-        LookAtRocket(Time.deltaTime);
-        gameObject.transform.Translate(new Vector2(0, speed * Time.deltaTime));
+        GameController game = GameController.GetGame();
+        if (transform.position.y > game.getTopBorder())
+            game.moveToMap(gameObject, Time.deltaTime);
+        else
+        {
+            LookAtRocket(Time.deltaTime);
+            gameObject.transform.Translate(new Vector2(0, speed * Time.deltaTime));
+        }
         deleteIfNeed();
     }
 }

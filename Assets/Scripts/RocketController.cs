@@ -29,7 +29,9 @@ public class RocketController : MonoBehaviour
     }
      void OnTriggerEnter2D(Collider2D other) 
     {
-        if (other.gameObject.tag == "Enemy" || other.gameObject.tag == "EnemyBullet")
+        if (other.gameObject.tag == "Enemy" || 
+        other.gameObject.tag == "EnemyBullet" ||
+        other.gameObject.tag == "Strong")
         {
             (GameController.GetGame()).loose();
         }

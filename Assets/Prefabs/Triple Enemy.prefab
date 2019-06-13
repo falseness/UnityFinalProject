@@ -211,7 +211,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Bullet: {fileID: 273168003018690271, guid: 1678377c4164ca146938642d726ccdfa, type: 3}
-  speed: -1.5
+  speed: -1
   reload: 1.5
   lastShotTime: 0
   bulletOffsetY: -0.5

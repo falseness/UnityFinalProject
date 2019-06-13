@@ -20,9 +20,11 @@ public class EnemyBulletController : MonoBehaviour
     }
     void Update()
     {
-        gameObject.transform.Translate(new Vector2(0, speed * Time.deltaTime));
-
-        GameController game = (GameController.GetGame());
+        GameController game = GameController.GetGame();
+        if (gameObject.transform.position.y > game.getTopBorder())
+            game.moveToMap(gameObject, Time.deltaTime);
+        else
+            gameObject.transform.Translate(new Vector2(0, speed * Time.deltaTime));
 
         deleteIfNeed();
     }

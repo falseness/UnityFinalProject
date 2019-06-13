@@ -19,7 +19,7 @@ public class PentaEnemyController : MonoBehaviour
     public float bulletOffsetY = -0.5f;
     void Start()
     {
-        
+        lastShotTime = Random.Range(0f, reloadBetweenSeies);
     }
 
     // Update is called once per frame
@@ -65,10 +65,15 @@ public class PentaEnemyController : MonoBehaviour
     }
     void Update()
     {
-        move(Time.deltaTime);
+        GameController game = GameController.GetGame();
+        if (transform.position.y > game.getTopBorder() - 4f)
+            game.moveToMap(gameObject, Time.deltaTime);
+        else
+        {
+            move(Time.deltaTime);
 
-        shotsLogic(Time.deltaTime);
-
+            shotsLogic(Time.deltaTime);
+        }
         deleteIfNeed();
     }
 }
