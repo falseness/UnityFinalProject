@@ -7,6 +7,13 @@ public class ClickController : MonoBehaviour
     // Start is called before the first frame update
     public GameObject rocket;
     public float speed = 10f;
+
+    public float backgroundStandartSpeed = -0.1f;
+    public float backgroundFastSpeed = -0.2f;
+    public float backgroundSlowSpeed = -0.05f;
+
+    public GameObject Background;
+
     public GameObject leftFire;
     public GameObject rightFire;
 
@@ -39,6 +46,8 @@ public class ClickController : MonoBehaviour
         (backSmallFire.GetComponent<Renderer>()).enabled = mousePos.y < rocket.transform.position.y;
         (backMiddleFire.GetComponent<Renderer>()).enabled = mousePos.y == rocket.transform.position.y;
         (backBigFire.GetComponent<Renderer>()).enabled = mousePos.y > rocket.transform.position.y;
+
+        changeBackgroundSpeed();
     }
     void defaultFire()
     {
@@ -48,6 +57,19 @@ public class ClickController : MonoBehaviour
         (backSmallFire.GetComponent<Renderer>()).enabled = false;
         (backMiddleFire.GetComponent<Renderer>()).enabled = true;
         (backBigFire.GetComponent<Renderer>()).enabled = false;
+
+        changeBackgroundSpeed();
+    }
+    void changeBackgroundSpeed()
+    {
+        BackgroundController backg = Background.GetComponent<BackgroundController>();
+
+        if ((backSmallFire.GetComponent<Renderer>()).enabled)
+            backg.speed = backgroundSlowSpeed;
+        if ((backMiddleFire.GetComponent<Renderer>()).enabled)
+            backg.speed = backgroundStandartSpeed;
+        if ((backBigFire.GetComponent<Renderer>()).enabled)
+            backg.speed = backgroundFastSpeed;
     }
     void moveRocketToMap()
     {

@@ -9,7 +9,7 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     static GameController instance;
 
-    public int numOfLastLevelOpened = 0;
+    public int numOfLastLevelOpened = 1;
     public bool levelInProcess = false;
     public int numOfLevelInProcess = 0;
 
@@ -22,6 +22,10 @@ public class GameController : MonoBehaviour
     public float rightBorderOfMap;
 
     public float standartSpeed = -1f;
+    public bool canStartLevel(int level)
+    {
+        return numOfLastLevelOpened >= level;
+    }
     public float getTopBorder()
     {
         return topBorderOfMap;
@@ -90,6 +94,8 @@ public class GameController : MonoBehaviour
     }
     public void loose()
     {
+        //return ;
+        //потом убери!
         if (levelInProcess)
         {
             levelInProcess = false;
@@ -125,6 +131,8 @@ public class GameController : MonoBehaviour
         GameObject toMenuButton = rootObject.transform.Find("ToMenuButton").gameObject;
         toMenuButton.SetActive(true);
 
+        if (numOfLastLevelOpened == numOfLevelInProcess)
+            ++numOfLastLevelOpened;
         levelInProcess = false;
     }
     // Update is called once per frame

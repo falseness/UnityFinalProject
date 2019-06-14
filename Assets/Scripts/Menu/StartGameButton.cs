@@ -10,7 +10,7 @@ public class StartGameButton : MonoBehaviour
     public Button btn;
     void startGame()
     {
-        SceneManager.LoadScene("Scenes/LVL6");
+        SceneManager.LoadScene("Scenes/LVL1");
         (GameController.GetGame()).numOfLevelInProcess = 0;
     }
     void Start()

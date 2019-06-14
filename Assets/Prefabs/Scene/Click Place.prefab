@@ -57,8 +57,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 602b4405aafb90a4aa70cea04a7038dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rocket: {fileID: 0}
+  rocket: {fileID: 3447968506074198593, guid: 34317d0f26d08f34eb4dd2c469db2db4, type: 3}
   speed: 3
+  backgroundStandartSpeed: -0.2
+  backgroundFastSpeed: -0.3
+  backgroundSlowSpeed: -0.1
+  Background: {fileID: 7952496168350283262, guid: 92168a35b367d544cbd76bcb94eba52a,
+    type: 3}
   leftFire: {fileID: 0}
   rightFire: {fileID: 0}
   backSmallFire: {fileID: 0}
